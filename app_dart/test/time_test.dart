@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:app_dart/screens/home_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,8 +23,8 @@ void main() async {
       await tester.pump(const Duration(milliseconds: 600));
       final now = tz.TZDateTime.now(zone);
       final range = DateTimeRange(
-        start: now.subtract(const Duration(milliseconds: 1100)),
-        end: now.add(const Duration(milliseconds: 1100)),
+        start: now.subtract(const Duration(seconds: 2)),
+        end: now.add(const Duration(seconds: 2)),
       );
       final time = find.byType(Text).at(1).evaluate().first.widget;
       expect(find.byType(Text), findsNWidgets(2));
@@ -37,6 +40,9 @@ void main() async {
           int.parse(string[2]),
           now.millisecond,
         );
+        debugPrint(dataToCompare.toString());
+        debugPrint(range.start.toString());
+        debugPrint(range.end.toString());
         expect(
           dataToCompare.isAfter(range.start) &&
               dataToCompare.isBefore(range.end),

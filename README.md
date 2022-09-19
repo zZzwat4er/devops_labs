@@ -1,5 +1,8 @@
 # DevOps lab 2
 
+![python workflow](https://github.com/zZzwat4er/devops_labs/actions/workflows/python.yaml/badge.svg?branch=lab3)
+![rust workflow](https://github.com//zZzwat4er/devops_labs/actions/workflows/dart.yaml/badge.svg?branch=lab3)
+
 ___
 
 ## Overview
@@ -16,13 +19,35 @@ There are some requirements to run this apps
 ### Python
 
 - You have to have python
-- You need to download 2 libs: flask() and pytz (venv would work fine)
+- You need to download 4 libs:
+  - flask
+  - flake8
+  - pytz
+  - pytest
 
 ### Dart
 
 - install flutter [link](https://docs.flutter.dev/get-started/install/linux)
 - install chrome if you do not have it allready
 - make sure with `flutter doctor` that you have "Chrome - develop for the web" checked (otherwise try to set CHROME_EXECUTABLE to your chrome executable with `export CHROME_EXECUTABLE=<path/to/chrome/executable>` and check one more time it should work)
+
+___
+
+## Tests
+
+### Python
+
+```bash
+cd ./app_python
+python -m pytest 
+```
+
+### Dart
+
+```bash
+cd ./app_dart
+flutter test --platform chrome
+```
 
 ___
 
@@ -80,8 +105,8 @@ docker run --network="host" --name="web" wat4er/inno_devops:python
 On local macine:
 
 ```bash
-cd ./app_python/app
-python3 ./main.py
+cd ./app_python
+python3 -m app
 ```
 
 after this you can access web app in your browser by url : `localhos:5000`
